@@ -246,9 +246,14 @@ Use listOfNames to do the following:
 */
 
 function listOfNames(artists) {
-  newArray
+  // it is also viable to use: let newArray = artists.map(name => artists.name)
+  // the arrow funtion allows for much cleaner writting and reading 
+  let newArray = artists.map(function(artists) {
+  return artists.name;
+});
+  return newArray;
 }
-
+console.log(listOfNames(artists));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -260,10 +265,12 @@ Use removeArtist to do the following:
 5. Return the resulting copied array
 🌟 EXAMPLE: if removeArtist is invoked with the artists array and the number 0, it will return the resulting array with Amedeo Modigliani removed from our dataset. */
 
-function removeArtist(/*Your Code Here*/) {
-  /*Your Code Here*/
+function removeArtist(artists, number) {
+  let taskArray = [...artists];
+  taskArray.splice(number, 1);
+  return taskArray
 }
-
+console.log(removeArtist(artists, 0));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -282,24 +289,37 @@ Use addArtist to do the following:
 5. Add the newly created object to the copied array, then return the copied array
 🌟 EXAMPLE: Invoking addArtist(artists, 'John Doe', '1988-2022', 'Full Stack Development', 'African American', 'I have a background in customer service at Big Retail Chain. I am attending BloomTech to become a Frontend Developer.') should return the artists array with the above object added to the end of the array. */
 
-function addArtist(/*Your Code Here*/) {
-  /*Your Code Here*/
+function addArtist(artists, name, years, genre, nationality, bio) {
+  const artistMe = {               // create new object for array 
+    name,
+    years,
+    genre,
+    nationality,
+    bio
+  };
+  let copiedArray = [...artists]; //copy
+  copiedArray.push(artistMe);     //add end 
+  return copiedArray              // return 
 }
-
+console.log(addArtist(artists, "Jeremy Laabs", "1991 - 2023", "Full Stack Development", "American", "lorem ipsum"));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Use lotsOfArt to do the following: 
-1. Receive the artist array as an argument passed from a parameter  
+1. Receive the artists array as an argument passed from a parameter  
 2. Return an array with names of artists in the received array who painted more than 100 paintings.
 
 🌟 EXAMPLE: lotsOfArt(artists) will return ["Amedeo Modigliani", "Rene Magritte", ... "Albrecht Dürer"]
 */
 
-function lotsOfArt(/*Your Code Here*/) {
-  /*Your Code Here*/
-}
-
+function lotsOfArt(artists) {
+  artists.filter(function(artists) {
+    return artists.paintings > 100;
+  }).map(function(artists) {
+    return artists.name
+  })
+  }
+  console.log(lotsOfArt(artists));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 8: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
