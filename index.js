@@ -313,12 +313,14 @@ Use lotsOfArt to do the following:
 */
 
 function lotsOfArt(artists) {
-  artists.filter(function(artists) {
-    return artists.paintings > 100;
-  }).map(function(artists) {
-    return artists.name
-  })
+  let bigTimeArtists = [];
+  for(let i = 0; i <artists.length; i++){
+    if (artists[i].paintings > 100){
+      bigTimeArtists.push(artists[i].name)
+    }
   }
+  return bigTimeArtists
+} 
   console.log(lotsOfArt(artists));
 
 
